@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+oracledb
+python-jose[cryptography]
+bcrypt
+python-multipart
+langchain==0.3.20
+langchain-openai
+langchain-community
+openai
+python-dotenv
+langchain-experimental
+faiss-cpu

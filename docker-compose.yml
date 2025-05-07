@@ -1,0 +1,32 @@
+version: "3.8"
+
+services:
+  gym-api:
+    build: .
+    container_name: gym-api
+    environment:
+      - DB_HOST=oracle-xe
+      - DB_PORT=1521
+      - DB_USER=GYM_ADMIN
+      - DB_PASS=gym123
+      - DB_SID=XE
+      - JWT_SECRET=SomeSecretKey
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    ports:
+      - "9000:8000"
+    networks:
+      - mynetwork2
+
+  gym-frontend:
+    build: ./frontend
+    container_name: gym-frontend
+    ports:
+      - "8081:80"
+    depends_on:
+      - gym-api
+    networks:
+      - mynetwork2
+
+networks:
+  mynetwork2:
+    external: true
